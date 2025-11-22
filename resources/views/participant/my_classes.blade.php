@@ -55,7 +55,7 @@
                                     @endif
                                 </td>
                                 <td class="px-4 py-2 text-right">
-                                    <form action="{{ route('participant.enrollments.cancel', $enrollment) }}"
+                                    <form action="{{ route('participant.enrollments.destroy', $enrollment) }}"
                                           method="POST"
                                           onsubmit="return confirm('Yakin batalkan pendaftaran?');">
                                         @csrf
