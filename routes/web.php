@@ -47,10 +47,10 @@ Route::middleware(['auth', 'role:peserta,admin'])->group(function () {
     Route::get('/participant/my-classes', [ClassBrowseController::class, 'myClasses'])
         ->middleware('auth')
         ->name('participant.my_classes');
-    // Batalkan
-    Route::delete('/participant/enrollments/{enrollment}', [ClassBrowseController::class, 'cancel'])
+    // Batalkan == menghapus enrollment
+    Route::delete('/participant/enrollments/{enrollment}', [ClassBrowseController::class, 'destroy'])
         ->middleware('auth')
-        ->name('participant.enrollments.cancel');
+        ->name('participant.enrollments.destroy');
 });
 
 require __DIR__ . '/auth.php';

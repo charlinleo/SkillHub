@@ -30,7 +30,6 @@ class ClassBrowseController extends Controller
                 ->pluck('status', 'class_id')
                 ->toArray();
 
-            // array: [class_id1, class_id2, ...]
             $enrolledClassIds = array_keys($enrollmentStatuses);
         }
 
@@ -48,7 +47,7 @@ class ClassBrowseController extends Controller
 
             $userEnrollment = Enrollment::where('user_id', $user->id)
                 ->where('class_id', $class->id)
-                ->first(); // jangan toArray biar bisa pakai ->status di Blade
+                ->first();
         }
 
         $enrolledClassIds = [];
@@ -106,7 +105,7 @@ class ClassBrowseController extends Controller
         return view('participant.my_classes', compact('enrollments'));
     }
 
-    public function cancel(Enrollment $enrollment)
+    public function destroy(Enrollment $enrollment)
     {
         $user = auth()->user();
 
