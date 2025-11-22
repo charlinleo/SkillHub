@@ -40,6 +40,17 @@
                     </div>
                 </div>
 
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="font-semibold">Waktu Mulai:</span>
+                        <div>{{ $class->start_time ?? '-' }}</div>
+                    </div>
+                    <div>
+                        <span class="font-semibold"> Waktu berakhir:</span>
+                        <div>{{ $class->end_time ?? '-' }}</div>
+                    </div>
+                </div>
+
                 @if ($rows->count() > 0)
                     <div class="mt-6">
                         <h4 class="text-sm font-semibold mb-2">

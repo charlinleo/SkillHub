@@ -21,7 +21,7 @@
             @endif
 
             <div class="bg-white shadow-sm sm:rounded-lg overflow-hidden">
-                <table class="min-w-full text-sm">
+                <table class="table table-bordered">
                     <thead class="bg-gray-100">
                         <tr>
                             <th class="px-4 py-2 text-left">Nama Kelas</th>
