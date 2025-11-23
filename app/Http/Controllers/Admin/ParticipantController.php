@@ -16,10 +16,10 @@ class ParticipantController extends Controller
     public function index()
     {
         $peserta = User::where('role', 'peserta')
-        ->with(['enrollments.skillClass'])
-        ->paginate(10);
+            ->with(['enrollments.skillClass'])
+            ->paginate(10);
 
-    return view('admin.participants.index', compact('peserta'));
+        return view('admin.participants.index', compact('peserta'));
     }
 
     public function create()
@@ -30,7 +30,7 @@ class ParticipantController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'  => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'phone' => 'nullable|string',
             'address' => 'nullable|string',
@@ -42,7 +42,7 @@ class ParticipantController extends Controller
         User::create($validated);
 
         return redirect()->route('admin.participants.index')
-                         ->with('success', 'Peserta berhasil ditambahkan');
+            ->with('success', 'Peserta berhasil ditambahkan');
     }
 
     public function edit(User $participant)
@@ -57,7 +57,7 @@ class ParticipantController extends Controller
         abort_unless($participant->isPeserta(), 404);
 
         $validated = $request->validate([
-            'name'  => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $participant->id,
             'phone' => 'nullable|string',
             'address' => 'nullable|string',
@@ -66,7 +66,7 @@ class ParticipantController extends Controller
         $participant->update($validated);
 
         return redirect()->route('admin.participants.index')
-                         ->with('success', 'Data peserta diperbarui');
+            ->with('success', 'Data peserta diperbarui');
     }
 
     public function destroy(User $participant)
